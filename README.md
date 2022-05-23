@@ -1,4 +1,4 @@
-# My Event App Be
+# API SECURITY
 ## Install and running app
 ```
 $ git clone https://github.com/vubom01/my-event-app-be.git
