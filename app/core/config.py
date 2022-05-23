@@ -30,30 +30,6 @@ class Settings(BaseSettings):
     SECRET_KEY = os.getenv('SECRET_KEY', '')
     SECURITY_ALGORITHM = os.getenv('SECURITY_ALGORITHM', '')
 
-    CLOUD_NAME = os.getenv('CLOUD_NAME')
-    API_KEY = os.getenv('API_KEY')
-    API_SECRET = os.getenv('API_SECRET')
-
-    MAIL_USERNAME = os.getenv('MAIL_USERNAME', '')
-    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', '')
-    MAIL_FROM = os.getenv('MAIL_FROM', '')
-    MAIL_PORT = int(os.getenv('MAIL_PORT', 1))
-    MAIL_SERVER = os.getenv('MAIL_SERVER')
-    MAIL_TLS = True
-    MAIL_SSL = False
-    USE_CREDENTIALS = True
-
 
 settings = Settings()
-
-mail_config = fastapi_mail.ConnectionConfig(
-    MAIL_USERNAME=settings.MAIL_USERNAME,
-    MAIL_PASSWORD=settings.MAIL_PASSWORD,
-    MAIL_FROM=settings.MAIL_FROM,
-    MAIL_PORT=settings.MAIL_PORT,
-    MAIL_SERVER=settings.MAIL_SERVER,
-    MAIL_TLS=settings.MAIL_TLS,
-    MAIL_SSL=settings.MAIL_SSL,
-    USE_CREDENTIALS=settings.USE_CREDENTIALS
-)
 
