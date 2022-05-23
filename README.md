@@ -1,8 +1,8 @@
 # API SECURITY
 ## Install and running app
 ```
-$ git clone https://github.com/vubom01/my-event-app-be.git
-$ cd my-event-app-be
+$ git clone https://github.com/vubom01/api-security.git
+$ cd api-security
 $ virtualenv -p python3 .venv
 $ source .venv/bin/activate (Ubuntu)
   .venv\Scripts\activate (Windows)
