@@ -14,6 +14,7 @@ class UserDetail(ItemBaseModel):
     phone_number: Optional[str]
     gender: Optional[str]
     dob: Optional[date]
+    role: Optional[str]
 
 
 class UserCreateRequest(ItemBaseModel):
