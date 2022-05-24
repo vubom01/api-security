@@ -18,7 +18,7 @@ from app.crud.crud_user import crud_user
 from app.helpers.exception_handler import CustomException, ValidateException
 from app.schemas.sche_base import ItemBaseModel
 from app.schemas.sche_token import TokenPayload
-from app.schemas.sche_user import UserDetail, UserUpdateRequest
+from app.schemas.sche_user import UserDetail, UserUpdateRequest, UserCreate
 
 logger = logging.getLogger()
 
@@ -62,7 +62,7 @@ class UserService(object):
             return crud_user.get(db=db, id=token_data.user_id)
 
     @staticmethod
-    def create_user(db=None, user: UserDetail = None):
+    def create_user(db=None, user: UserCreate = None):
         user_detail = crud_user.get_user_by_filter(db=db, username=user.username)
         if user_detail:
             raise CustomException(http_code=400, message='Username is already in use')

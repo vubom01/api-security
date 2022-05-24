@@ -17,7 +17,7 @@ class User(BareBaseModel):
     phone_number = Column(String, nullable=True)
     gender = Column(String, nullable=True)
     dob = Column(String, nullable=True)
-    role = Column(String, nullable=False)
+    role = Column(String, nullable=True)
 
     def public_info_to_client(self) -> dict:
         return {
