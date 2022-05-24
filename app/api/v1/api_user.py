@@ -1,6 +1,8 @@
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
 from app.api import deps
@@ -18,8 +20,12 @@ class UpdatePassword(ItemBaseModel):
     update_password: str
 
 
-@router.get('/me', dependencies=[Depends(login_required)], response_model=DataResponse[UserDetail])
-def detail(current_user: UserDetail = Depends(login_required)):
+limiter = Limiter(key_func=get_remote_address)
+
+
+@router.get('/me', dependencies=[Depends(login_required)]   , response_model=DataResponse[UserDetail])
+@limiter.limit("10/minute")
+def detail(request: Request, current_user: UserDetail = Depends(login_required)):
     return DataResponse().success_response(data=current_user)
 
 
