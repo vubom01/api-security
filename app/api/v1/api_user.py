@@ -23,7 +23,7 @@ class UpdatePassword(ItemBaseModel):
 limiter = Limiter(key_func=get_remote_address)
 
 
-@router.get('/me', dependencies=[Depends(login_required)]   , response_model=DataResponse[UserDetail])
+@router.get('/me', dependencies=[Depends(login_required)], response_model=DataResponse[UserDetail])
 @limiter.limit("10/minute")
 def detail(request: Request, current_user: UserDetail = Depends(login_required)):
     return DataResponse().success_response(data=current_user)
